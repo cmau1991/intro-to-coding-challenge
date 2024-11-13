@@ -1,0 +1,25 @@
+# Challenge 4
+# Show the workflow of removing all occurrences of a given character from the input
+# string using pseudocode and flowchart.
+# EXAMPLE: Removing all of the “s” from “Mississippi” will return “Miiippi”
+
+# pseudocode:
+# Read the word
+# Read the letter to remove
+# For every instance of the letter in word, replace with ' ' (empty space)
+# print new word
+
+pick_word = True
+while pick_word:
+
+    enter_word = str(input("What word would you like to use?"))
+    choose_letter_to_remove = str(input("What letter would you like to remove from your chosen word?"))
+
+    enter_word = enter_word.replace(choose_letter_to_remove, '')
+
+    print(enter_word)
+
+    new_word = input('Would you like to try a different word? (Y/N): ')
+
+    if new_word.upper() != 'Y':
+        pick_word = False
