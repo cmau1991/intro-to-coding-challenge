@@ -1,40 +1,47 @@
-# Challenge 5
-# Find the second largest number in an array and demonstrate the workflow using
-# pseudocode and flowchart.
-# Example: Given an input array [45, 62, 8, 90, 13, 54, 7], the output should be 62.
+# Challenge Description
+# Write the pseudocode and create flowchart that finds the next ‘n’
+# number of leap years from current year. Here ‘n’ is the input taken from user.
+# This problem would require you to create two flowcharts, one demonstrating a function
+# that tells you whether it is a year is leap year or not and the other to loop incrementally
+# until you find next ‘n’ leap years.
+# flowcharts - https://whimsical.com/challenge1-BjdMygkQJk1D8o1yCkZKNc
 
-# pseudocode:
-# Create an empty array
+#pseudocode:
 # Read the number
-# Append the entered number of random numbers into the array
-# Determine the length of the array
-# Locate the largest number in the array
-# Print the array
-# Print "Largest number in the given array is [ANSWER]".
+# Create list to add leap years too
+# Read second number and set a count to zero
+# If 1st number is divisible by 400
+# Year is a leap year and add to list
+# add 1 to count
+# Else If 1st number is divisible by 100
+# Not a leap year and do not add to list
+# Else if 1st number is divisible by 4
+# Year is a leap year and add to list
+# add 1 to count
+# Else the year is not a leap year and do not add to list
+# Repeat until the count equals the 2nd second number
+# Print list of leap years from 1st number
 
-import random
+def find_leap_years(given_year):
+    list_of_leap_years = []
+    count = 0
+    while(n_leaps>count):
+        if (given_year % 400 == 0):
+            list_of_leap_years.append(given_year)
+            count += 1
+        elif (given_year % 100 == 0):
+            j = 0
+        elif (given_year % 4 == 0):
+            list_of_leap_years.append(given_year)
+            count += 1
+        else:
+            j = 0
+        if (count == n_leaps):
+            break
+        given_year = given_year + 1
+    return list_of_leap_years
 
-max_number = True
-while max_number:
-
-    def largest(arr, n):
-        max = arr[0]
-        for i in range(1, n):
-            if arr[i] > max:
-                max = arr[i]
-        return max
-
-    arr = []
-    x = int(input("How many numbers would you like in your array?"))
-    for i in range(x):
-        num = random.randint(1,150)
-        arr.append(num)
-    n = len(arr)
-    Ans = largest(arr, n)
-    print(arr)
-    print("Largest number in the given array is ", Ans)
-
-    new_array = input('Would you like to find the largest number in a different random array? (Y/N): ')
-
-    if new_array.upper() != 'Y':
-        max_number = False
+given_year = int(input("What is your starting year?"))
+n_leaps = int(input("How many leap years would you like to see from your starting year?"))
+list_of_leap_years = find_leap_years(given_year)
+print(list_of_leap_years)
