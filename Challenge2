@@ -1,0 +1,63 @@
+# Challenge 2
+# Write the pseudocode and create a flowchart that demonstrate the workflow of
+# identifying if a number is an Admirable number or not
+# A whole number is admirable if the sum of proper divisors (excluding the number
+# itself) minus two times one the proper divisors is equal to the number.
+# Here’s an example- 30 is an admirable number because 1+2+3+5+6+10+15 – 2*6 = 30.
+# Hint: This might require using two loop structures. You can of course choose to do it
+# differently.
+
+#pseudocode:
+# Read the number
+# if the number equals twice value of - the sum of all its divisors minus 2 times the proper divisor
+# print "Yes, it is an Admirable number."
+# else
+# print "No, it is not an Admirable number."
+
+
+import math
+
+guess_number = True
+while guess_number:
+
+    def admirable(n):
+        result = 0
+        for i in range(2, int(math.sqrt(n)) + 1):
+            if (n % i == 0):
+                if (i == (n // i)):
+                    result += i
+                else:
+                    result += (i + n // i)
+        return (result + n + 1)
+
+    def check(num):
+        check_n = admirable(num)
+        for i in range(2, int(math.sqrt(num)) + 1):
+            if (num % i == 0):
+                if (i == (num // i)):
+                    if (check_n - 2 * i == 2 * num):
+                        return True
+                else:
+                    if (check_n - 2 * i == 2 * num):
+                        return True
+                    if (check_n - 2 * (num // i) == 2 * num):
+                        return True
+        if (check_n - 2 * 1 == 2 * num):
+            return True
+        return False
+
+    def isAdmirableNum(N):
+        return check(N)
+
+    # Ask user to specify the number they would like to check for Admirable status or not.
+    n = int(input("What number would you like to check if it is an Admirable number or not?"))
+
+    if (isAdmirableNum(n)):
+        print("Yes, it is an Admirable number.")
+    else:
+        print("No, it is not an Admirable number.")
+
+    guess_again = input('Would you like to check another number? (Y/N): ')
+
+    if guess_again.upper() != 'Y':
+        guess_number = False
