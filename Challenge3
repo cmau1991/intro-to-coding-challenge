@@ -1,0 +1,42 @@
+# Challenge 3
+# Using a flowchart and pseudocode, show the workflow of code that can tell if a
+# number is deficient, perfect or abundant.
+# A whole number is said to be deficient if the sum of proper divisors is less than the number.
+# (e.g. 8 is deficient as 1+2+4 < 8
+# A number is perfect if the sum of proper divisors is equal to the number. (e.g. 6 is perfect because 1+2+3=6)
+# A number is called abundant if the if the sum of the proper divisors is greater than
+# the number. (e.g. 12 is abundant as 1+2+3+4+6 > 12).
+
+#pseudocode:
+# Read the number
+# if the number is greater than the sum of all its proper divisors
+# print "[number] it an abundant number."
+# else if the number is less than the sum of all its proper divisors
+# print "[number] is deficient number."
+# else if the number is equal to tthe sum of all its proper divisors
+# print "[number] it a perfect number."
+
+import math
+
+guess_number = True
+while guess_number:
+
+    def get_divs(numb):
+        return [i for i in range(1, numb) if numb % i == 0]
+
+    def classify(num):
+        divs_sum = sum(get_divs(num))
+        if divs_sum > num:
+            print('{} is an abundant number'.format(num))
+        elif divs_sum < num:
+            print('{} is a deficient number'.format(num))
+        elif divs_sum == num:
+            print('{} is a perfect number'.format(num))
+
+    numb = int(input("What number would you like to check if it is an Abundant, Deficient or Perfect number or not?"))
+    classify(numb)
+
+    new_number = input('Would you like to check another number? (Y/N): ')
+
+    if new_number.upper() != 'Y':
+        guess_number = False
